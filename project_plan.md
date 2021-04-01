@@ -82,7 +82,7 @@
 - Use regression models to help determine target (logerror)
 
 
-<h3>Presenation Practice</h3>
+<h3>Presentation Practice</h3>
 
    - Create draft of talking points
    - Don't get stuck in the weeds, stay high level
