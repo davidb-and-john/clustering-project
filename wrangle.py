@@ -171,7 +171,7 @@ def clean_zillow(df):
     # Drop columns
     dropcols = ['regionidzip', 'finishedsquarefeet12', 'propertyzoningdesc', 'buildingqualitytypeid', 'regionidzip', 'calculatedbathnbr', 
                 'fullbathcnt', 'landtaxvaluedollarcnt', 'structuretaxvaluedollarcnt', 'censustractandblock', 'regionidcity', 'unitcnt',
-                'rawcensustractandblock', 'Unnamed: 0', 'propertycountylandusecode', 'regionidcounty', 'assessmentyear', 'propertylandusetypeid', 'id']
+                'rawcensustractandblock','propertycountylandusecode', 'regionidcounty', 'assessmentyear', 'propertylandusetypeid', 'id']
     df.drop(dropcols, axis=1, inplace=True)
     
     # convert columns to object
@@ -193,6 +193,7 @@ def clean_zillow(df):
     
     # Set parcelid as the index
     df = df.set_index('parcelid')
+    
     
 
 # Train/Split the data~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
