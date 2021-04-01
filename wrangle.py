@@ -197,24 +197,55 @@ def clean_zillow(df):
 
 # Train/Split the data~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+def split(df, stratify_by= None):
+    """
+    Crude train, validate, test split
+    To stratify, send in a column name
+    """
+    if stratify_by == None:
+        train, test = train_test_split(df, test_size=.2, random_state=319)
+        train, validate = train_test_split(train, test_size=.3, random_state=319)
+    else:
+        train, test = train_test_split(df, test_size=.2, random_state=319, stratify=df[stratify_by])
+        train, validate = train_test_split(train, test_size=.3, random_state=319, stratify=train[stratify_by])
+    return train, validate, test
 
 
+# Create X_train, y_train, etc...~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+def seperate_y(train, validate, test):
+    '''
+    This function will take the train, validate, and test dataframes and seperate the target variable into its
+    own panda series
+    '''
+    X_train = train.drop(columns=['tax_value'])
+    y_train = train.tax_value
+    X_validate = validate.drop(columns=['tax_value'])
+    y_validate = validate.tax_value
+    X_test = test.drop(columns=['tax_value'])
+    y_test = test.tax_value
+    return X_train, y_train, X_validate, y_validate, X_test, y_test
 
+# Scale the data~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-
-
-
-# Wrangle the data~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-
-
-
-
-
-
+def scale_data(train, validate, test):
+    '''
+    This function will scale numeric data using Min Max transform after 
+    it has already been split into train, validate, and test.
+    '''
+    # Make the thing
+    scaler = sklearn.preprocessing.MinMaxScaler()
+    # We fit on the training data
+    # we only .fit on the training data
+    scaler.fit(train)
+    train_scaled = scaler.transform(train)
+    validate_scaled = scaler.transform(validate)
+    test_scaled = scaler.transform(test)
+    # turn the numpy arrays into dataframes
+    train_scaled = pd.DataFrame(train_scaled, columns=train.columns)
+    validate_scaled = pd.DataFrame(validate_scaled, columns=train.columns)
+    test_scaled = pd.DataFrame(test_scaled, columns=train.columns)
+    return train_scaled, validate_scaled, test_scaled
 
 
 # Miscellaneous Prep Functions~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
