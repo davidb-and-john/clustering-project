@@ -194,6 +194,7 @@ def clean_zillow(df):
     # Set parcelid as the index
     df = df.set_index('parcelid')
     
+    return df
     
 
 # Train/Split the data~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
