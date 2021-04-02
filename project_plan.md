@@ -10,15 +10,15 @@
 <h3>Timeline</h3>
 
 - <b><font color="red"> Thursday</font></b>
-    - Complete Project Planning <b>complete</b>
-    - Set up Git Hub Repository <b>complete</b>
-    - Create Trello Board <b>in-process</b>
-    - Create and set up bones of README file <b>in-process</b> 
-    - Compare and Finalize SQL Query for acquire.py <b>complete</b>
-    - Compare clean_zillow functions <b>complete</b>
-    - Discuss outliers and how to handle <b>complete</b>
-    - Finalize prepare.py with cleaning completed <b>in-process</b>
-    - Read through project spec again <b>in-process</b>
+    - Complete Project Planning ✅
+    - Set up Git Hub Repository ✅
+    - Create Trello Board 💻
+    - Create and set up bones of README file ✅ 
+    - Compare and Finalize SQL Query for acquire.py ✅
+    - Compare clean_zillow functions ✅
+    - Discuss outliers and how to handle ✅
+    - Finalize prepare.py with cleaning completed 💻
+    - Read through project spec again 💻
 
 - <b><font color="red"> Friday</font></b>
     - Complete any unfinished tasks from Thursday if still left opened

@@ -24,13 +24,17 @@ In here, you will find expanded information on this project including goals, how
 ___
 ​
 ​
+
+------
 ## <a name="project_description"></a>Project Description:
-[[Back to top](#top)]
 
 
 This project is utilizing data from the Codeup SQL server featuring 2017 property data from Zillow. Our goal is to identify the drivers of log error in Zillow's zestimate. We are using unsupervised clustering to help narrow down the features driving the error and then utilizing linear regression to see if we can create a more accurate model.
 
+[[Back to top](#top)]
 ​
+
+------------
 ## Goals
 ​
 The goals of the project are to answer the questions and deliver the following:
@@ -41,8 +45,20 @@ The goals of the project are to answer the questions and deliver the following:
 ​
 ***
 ## <a name="planning"></a>Project Planning: 
+
+- We have two places where you can view our project planning. One is our Trello board, which can be found at this link and you can also see a snippet in the image below. 
+
+- The other place where you can view our initial project planning stage is in the project_plan.md file here in our git hub. That too is kept up to date and progress is marked using the following:
+
+- ✅    to mark a completed item
+- 💻    to mark an in progress item
+- 🚨    to mark a late item (more than one day)
+
+
 [[Back to top](#top)]
 ​
+
+----------
 ### Projet Outline:
 - Acquisiton of data through Codeup SQL Server, using env.py file with username, password, and host
 - Prepare and clean data with python - Jupyter Labs Notebook
@@ -56,7 +72,8 @@ The goals of the project are to answer the questions and deliver the following:
 - Model data 
 - Test Data
 - Conclude results
-        
+ 
+----------- 
 ### Hypothesis
 - Input hypothesis of entire project (anticipated outcomes, models, statistics, etc)
 ​
