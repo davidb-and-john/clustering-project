@@ -64,6 +64,7 @@ The goals of the project are to answer the questions and deliver the following:
 - 🚨    to mark a late item (more than one day)
 
 
+A link to the Trello board below can be found at https://trello.com/b/VRlIpoeo/zillow-cluster-project
 
 
 Here is a snapshot of our project planning/setup on the evening of 4/1/21
