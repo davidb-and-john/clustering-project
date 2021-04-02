@@ -88,6 +88,12 @@ def clean_zillow(df):
     today = pd.to_datetime('today')
     df['age_of_home'] = today.year - df['yearbuilt']
     
+    df['age_bin'] = pd.cut(df.age_of_home, 
+                           bins = [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140],
+                           labels = [0, .066, .133, .20, .266, .333, .40, .466, .533, 
+                                     .60, .666, .733, .8, .866, .933])
+    
+     
     # clean up longitude (this cleans latitude as well)
     longindex = df.loc[df['longitude'].isin(['NaN'])].index
     df.drop(longindex , inplace=True)
@@ -104,7 +110,39 @@ def clean_zillow(df):
     df['poolcnt'].fillna(0, inplace=True)
     
     # Create bathrooms per sqft
-    df['bath_pers_qft'] = df['bathroomcnt'] / df['calculatedfinishedsquarefeet']
+    df['baths_per_sqft'] = df['bathroomcnt'] / df['calculatedfinishedsquarefeet']
+    
+    # Create tax rate
+    df['taxrate'] = df.taxamount/df.taxvaluedollarcnt*100
+    
+    # ratio of bathrooms to bedrooms
+    df['bath_bed_ratio'] = df.bathroomcnt/df.bedroomcnt
+    
+    # Drop bed/bath ratio nulls
+    indexbedbathratio = df.loc[df['bath_bed_ratio'].isin(['NaN'])].index
+    df.drop(indexbedbathratio , inplace=True)
+
+    # Fill in lot size square footage nulls with median
+    df['lotsizesquarefeet'].fillna((df['lotsizesquarefeet'].median()), inplace=True)
+    
+    # create acres variable
+    df['acres'] = round(df.lotsizesquarefeet/43560, 2)
+    
+    # bin acres
+    df['acres_bin'] = pd.cut(df.acres, bins = [0, .10, .15, .2, .5, 1, 5, 10, 20, 50, 200], 
+                       labels = [0, .1, .2, .3, .4, .5, .6, .7, .8, .9])
+    
+  
+    # square feet bin
+    df['sqft_bin'] = pd.cut(df.calculatedfinishedsquarefeet, 
+                            bins = [0, 800, 1000, 1250, 1500, 2000, 2500, 3000, 4000, 7000, 12000],
+                            labels = [0, .1, .2, .3, .4, .5, .6, .7, .8, .9]
+                       )
+
+    # update datatypes of binned values to be float
+    df = df.astype({'sqft_bin': 'float64', 'acres_bin': 'float64', 'age_bin': 'float64'
+                    })
+
     
     indextaxvalue = df.loc[df['taxvaluedollarcnt'].isin(['NaN'])].index
     df.drop(indextaxvalue , inplace=True)
@@ -143,9 +181,7 @@ def clean_zillow(df):
     df['fips'] = df['fips'].astype(int)
     df['yearbuilt'] = df['yearbuilt'].astype(int)
     
-    # Fill in lot size square footage nulls with median
-    df['lotsizesquarefeet'].fillna((df['lotsizesquarefeet'].median()), inplace=True)
-    
+  
     # Clean up square footage
     indexsquarefeet = df.loc[df['calculatedfinishedsquarefeet'].isnull()].index 
     df.drop(indexsquarefeet, inplace=True)
@@ -169,10 +205,14 @@ def clean_zillow(df):
     df["airconditioningtypeid"].fillna(5,inplace = True)
 
     # Drop columns
-    dropcols = ['regionidzip', 'finishedsquarefeet12', 'propertyzoningdesc', 'buildingqualitytypeid', 'regionidzip', 'calculatedbathnbr', 
-                'fullbathcnt', 'landtaxvaluedollarcnt', 'structuretaxvaluedollarcnt', 'censustractandblock', 'regionidcity', 'unitcnt',
-                'rawcensustractandblock','propertycountylandusecode', 'regionidcounty', 'assessmentyear', 'propertylandusetypeid', 'id']
+    dropcols = ['regionidzip', 'finishedsquarefeet12', 'propertyzoningdesc', 'buildingqualitytypeid', 'regionidzip', 'calculatedbathnbr','fullbathcnt', 'landtaxvaluedollarcnt', 'structuretaxvaluedollarcnt', 'censustractandblock', 'regionidcity', 'unitcnt','rawcensustractandblock','propertycountylandusecode', 'regionidcounty', 'assessmentyear', 'propertylandusetypeid', 'id', 'Unnamed: 0']
+    
+    
     df.drop(dropcols, axis=1, inplace=True)
+    
+    # Drop age bin nulls
+    indexagebin = df.loc[df['age_bin'].isin(['NaN'])].index
+    df.drop(indexagebin, inplace=True)
     
     # convert columns to object
     df['fips'] = df['fips'].astype(object)
@@ -186,6 +226,14 @@ def clean_zillow(df):
     dummy_df.columns = ['la_county', 'orange_county', 'ventura_county']
     df = pd.concat([df, dummy_df], axis=1)
     
+    
+    #drop columns with nulls
+    threshold = int(.5 * len(df.index)) # Require that many non-NA values.
+    df.dropna(axis = 1, thresh = threshold, inplace = True)
+    
+    #drop rows with nulls
+    threshold = int(.5* len(df.columns)) # Require that many non-NA values.
+    df.dropna(axis = 0, thresh = threshold, inplace = True)
    
       
     # convert column to date time
