@@ -17,14 +17,14 @@
     - Compare and Finalize SQL Query for acquire.py ✅
     - Compare clean_zillow functions ✅
     - Discuss outliers and how to handle ✅
-    - Finalize prepare.py with cleaning completed 💻
-    - Read through project spec again 💻
+    - Finalize prepare.py with cleaning completed ✅
+    - Read through project spec again ✅
 
 - <b><font color="red"> Friday</font></b>
-    - Complete any unfinished tasks from Thursday if still left opened
-    - Review completed exploration exercises and indentify what was useful and can be replicated
-    - Discuss and create new features that can be explored
-    - Begin clustering
+    - Complete any unfinished tasks from Thursday if still left opened ✅
+    - Review completed exploration exercises and indentify what was useful and can be replicated 💻 
+    - Discuss and create new features that can be explored 💻 
+    - Begin clustering 💻 
         - Explore each cluster to come up with a label/identify each cluster
             - Evaluate which cluster has the most significant log errors through exploration and statistical testing
     - Feature engineer and Model on new cluster dataframes
