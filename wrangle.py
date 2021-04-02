@@ -283,18 +283,28 @@ def scale_data(train, validate, test):
     This function will scale numeric data using Min Max transform after 
     it has already been split into train, validate, and test.
     '''
+        
+    obj_col = ['fips', 'yearbuilt', 'airconditioningdesc', 'heatingorsystemdesc', 'transactiondate', 'bath_bed_ratio']
+    num_train = train.drop(columns = obj_col)
+    num_validate = validate.drop(columns = obj_col)
+    num_test = test.drop(columns = obj_col)
+        
     # Make the thing
     scaler = sklearn.preprocessing.MinMaxScaler()
-    # We fit on the training data
+  
+
     # we only .fit on the training data
-    scaler.fit(train)
-    train_scaled = scaler.transform(train)
-    validate_scaled = scaler.transform(validate)
-    test_scaled = scaler.transform(test)
+    scaler.fit(num_train)
+    train_scaled = scaler.transform(num_train)
+    validate_scaled = scaler.transform(num_validate)
+    test_scaled = scaler.transform(num_test)
+        
     # turn the numpy arrays into dataframes
-    train_scaled = pd.DataFrame(train_scaled, columns=train.columns)
-    validate_scaled = pd.DataFrame(validate_scaled, columns=train.columns)
-    test_scaled = pd.DataFrame(test_scaled, columns=train.columns)
+    train_scaled = pd.DataFrame(train_scaled, columns=num_train.columns)
+    validate_scaled = pd.DataFrame(validate_scaled, columns=num_train.columns)
+    test_scaled = pd.DataFrame(test_scaled, columns=num_train.columns)
+    
+    
     return train_scaled, validate_scaled, test_scaled
 
 
