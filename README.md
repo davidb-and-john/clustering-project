@@ -31,6 +31,15 @@ ___
 
 This project is utilizing data from the Codeup SQL server featuring 2017 property data from Zillow. Our goal is to identify the drivers of log error in Zillow's zestimate. We are using unsupervised clustering to help narrow down the features driving the error and then utilizing linear regression to see if we can create a more accurate model.
 
+
+<u>Data Source</u>
+* This data is being pulled from the Codeup SQL database under the name 'Zillow'
+    * For this project, I am utilizing the 2017 properties, predictions and all other associated tables available
+* The data can also be pulled from Kaggle.com 
+    * https://www.kaggle.com/c/zillow-prize-1/data
+* This repository also has a CSV of the data available as well
+
+
 [[Back to top](#top)]
 ​
 
@@ -51,8 +60,16 @@ The goals of the project are to answer the questions and deliver the following:
 - The other place where you can view our initial project planning stage is in the project_plan.md file here in our git hub. That too is kept up to date and progress is marked using the following:
 
 - ✅    to mark a completed item
-- 💻    to mark an in progress item
+- 💻    to mark an in-progress item
 - 🚨    to mark a late item (more than one day)
+
+
+
+
+Here is a snapshot of our project planning/setup on the evening of 4/1/21
+
+<img src="https://i.ibb.co/MN37PFF/trello-cluster.png" alt="Reg-ppline" border="0">
+
 
 
 [[Back to top](#top)]
