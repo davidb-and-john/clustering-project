@@ -1,7 +1,15 @@
-# clustering-project
+# Zillow Clustering-Project
 
-# <a name="top"></a>TITLE - readme.md
-![image-description-here](image-link-here)
+------------
+
+<h3> <a name="top"></a> Hi there 👋,</h3>
+
+Welcome to the README file for the Zillow Clustering Project.
+
+In here, you will find expanded information on this project including goals, how we will be working through the pipeline and a data dictionary to help offer more insight to the variables that are being used.
+
+------------
+![couple looking at house](https://www.zillowstatic.com/s3/homepage/static/Buy_a_home.png)
 ​
 ***
 [[Project Description](#project_description)]
@@ -18,14 +26,15 @@ ___
 ​
 ## <a name="project_description"></a>Project Description:
 [[Back to top](#top)]
-- The purpose 
-- 
+This project is utilizing data from the Codeup SQL server featuring 2017 property data from Zillow. Our goal is to identify the drivers of log error in Zillow's zestimate. We are using unsupervised clustering to help narrow down the features driving the error and then utilizing linear regressio
 ​
 ## Goals
 ​
 The goals of the project are to answer the questions and deliver the following:
 ​
-- List of goals
+- Use clustering to identify what groups of features are the strongest drivers of log error
+- Deliver a final notebook that shows the key drivers behind log error
+- Give a succinct 5 min presenation that covers the exploration, modeling, & takeaways 
 ​
 ***
 ## <a name="planning"></a>Project Planning: 
