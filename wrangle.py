@@ -12,6 +12,8 @@ from scipy import stats
 import warnings
 warnings.filterwarnings("ignore")
 
+import sklearn
+
 from sklearn.model_selection import train_test_split
 
 #Create connection~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -268,12 +270,12 @@ def seperate_y(train, validate, test):
     This function will take the train, validate, and test dataframes and seperate the target variable into its
     own panda series
     '''
-    X_train = train.drop(columns=['tax_value'])
-    y_train = train.tax_value
-    X_validate = validate.drop(columns=['tax_value'])
-    y_validate = validate.tax_value
-    X_test = test.drop(columns=['tax_value'])
-    y_test = test.tax_value
+    X_train = train.drop(columns=['logerror'])
+    y_train = train.logerror
+    X_validate = validate.drop(columns=['logerror'])
+    y_validate = validate.logerror
+    X_test = test.drop(columns=['logerror'])
+    y_test = test.logerror
     return X_train, y_train, X_validate, y_validate, X_test, y_test
 
 # Scale the data~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
