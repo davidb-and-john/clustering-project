@@ -127,12 +127,27 @@ Here is a snapshot of our project planning/setup on the evening of 4/1/21
 ​
 ### Data Used
 ---
-| Attribute | Definition | Data Type |
-| ----- | ----- | ----- |
-| feature_name1 | What does the feature measure of categorize? | int/object/float/string | 
-| feature_name2 | What does the feature measure of categorize? | int/object/float/string 
-| feature_name3 | What does the feature measure of categorize? | int/object/float/string 
-| feature_name4* | What does the feature measure of categorize? | int/object/float/string 
+|   Feature      |  Data Type   | Description    |
+| :------------- | :----------: | -----------: |
+|  parcelid | int64   | Unique parcel identifier    |
+| landuse_id     | float64 | Identifier for landuse type|
+| landuse_desc   | object | Describes the type of landuse|
+| last_sold_date  | object |transaction date of when property last sold|
+|  total_sqft  | float64   | Total livable square footage    |
+| bedroom_quanity    | float64 | count of bedrooms|
+| bathroom_quanity   | float64 | count of bathrooms|
+| fips  | object | Federal Information Processing Code (county code)|
+|  zip_code | object   | 5 digit code used by US Postal Service    |
+| year_built    | object | year home was built|
+| tax_assesed_value   | float64 | total value of home established by taxing authority|
+| latitude  | float64 | geographic coordinate that specifies the north–south position |
+|  longitude  | float64   | geographic coordinate that specifies the east-west position     |
+| tax_assess_yr    | float64 | The most recent year property taxes were assessed|
+| property_tax   | float64 | ad valorem tax on the value of a property.|
+| age_of_home  | int64 | age of home as of today's date in years|
+| tax_rate    | float64 | This is property tax / tax_assessed_value|
+| baths_pers_qft   | float64 | numbers of baths per sqft|
+| beds_pers_qft  | float64| number of beds per sqft|
 ​
 ***
 ​
