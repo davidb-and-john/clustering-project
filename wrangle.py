@@ -278,27 +278,29 @@ def seperate_y(train, validate, test):
 
 # Scale the data~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-def scale_data(train, validate, test):
+def scale_data(X_train, X_validate, X_test):
     '''
     This function will scale numeric data using Min Max transform after 
     it has already been split into train, validate, and test.
     '''
-        
+    
+    
     obj_col = ['fips', 'yearbuilt', 'airconditioningdesc', 'heatingorsystemdesc', 'transactiondate', 'bath_bed_ratio']
-    num_train = train.drop(columns = obj_col)
-    num_validate = validate.drop(columns = obj_col)
-    num_test = test.drop(columns = obj_col)
-        
+    num_train = X_train.drop(columns = obj_col)
+    num_validate = X_validate.drop(columns = obj_col)
+    num_test = X_test.drop(columns = obj_col)
+    
+    
     # Make the thing
     scaler = sklearn.preprocessing.MinMaxScaler()
-  
-
+    
+   
     # we only .fit on the training data
     scaler.fit(num_train)
     train_scaled = scaler.transform(num_train)
     validate_scaled = scaler.transform(num_validate)
     test_scaled = scaler.transform(num_test)
-        
+    
     # turn the numpy arrays into dataframes
     train_scaled = pd.DataFrame(train_scaled, columns=num_train.columns)
     validate_scaled = pd.DataFrame(validate_scaled, columns=num_train.columns)
@@ -306,6 +308,27 @@ def scale_data(train, validate, test):
     
     
     return train_scaled, validate_scaled, test_scaled
+
+# Combo Train & Scale Function~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+def split_seperate_scale(df, stratify_by= None):
+    '''
+    This function will take in a dataframe
+    seperate the dataframe into train, validate, and test dataframes
+    seperate the target variable from train, validate and test
+    then it will scale the numeric variables in train, validate, and test
+    finally it will return all dataframes individually
+    '''
+    # split data into train, validate, test
+    split(df, stratify_by= None)
+    
+    # seperate target variable
+    seperate_y(train, validate, test)
+    
+    # scale numeric variable
+    scale_data(X_train, X_validate, X_test)
+    
+    return train, validate, test, X_train, y_train, X_validate, y_validate, X_test, y_test, train_scaled, validate_scaled, test_scaled
 
 
 # Miscellaneous Prep Functions~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
