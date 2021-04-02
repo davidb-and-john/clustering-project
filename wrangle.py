@@ -115,13 +115,8 @@ def clean_zillow(df):
     # Create tax rate
     df['taxrate'] = df.taxamount/df.taxvaluedollarcnt*100
     
-    # ratio of bathrooms to bedrooms
-    df['bath_bed_ratio'] = df.bathroomcnt/df.bedroomcnt
+  
     
-    # Drop bed/bath ratio nulls
-    indexbedbathratio = df.loc[df['bath_bed_ratio'].isin(['NaN'])].index
-    df.drop(indexbedbathratio , inplace=True)
-
     # Fill in lot size square footage nulls with median
     df['lotsizesquarefeet'].fillna((df['lotsizesquarefeet'].median()), inplace=True)
     
@@ -195,6 +190,13 @@ def clean_zillow(df):
     
     # Fill Bathroom Nulls
     df['bathroomcnt'].replace(0,df['bathroomcnt'].median(axis=0),inplace=True)
+    
+    # ratio of bathrooms to bedrooms
+    df['bath_bed_ratio'] = df.bathroomcnt/df.bedroomcnt
+    
+    # Drop bed/bath ratio nulls
+    indexbedbathratio = df.loc[df['bath_bed_ratio'].isin(['NaN'])].index
+    df.drop(indexbedbathratio , inplace=True)
     
     # Heating System
     df["heatingorsystemdesc"].fillna("None", inplace = True)
