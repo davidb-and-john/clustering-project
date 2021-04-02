@@ -26,7 +26,8 @@ ___
 ​
 ## <a name="project_description"></a>Project Description:
 [[Back to top](#top)]
-This project is utilizing data from the Codeup SQL server featuring 2017 property data from Zillow. Our goal is to identify the drivers of log error in Zillow's zestimate. We are using unsupervised clustering to help narrow down the features driving the error and then utilizing linear regressio
+This project is utilizing data from the Codeup SQL server featuring 2017 property data from Zillow. Our goal is to identify the drivers of log error in Zillow's zestimate. We are using unsupervised clustering to help narrow down the features driving the error and then utilizing linear regression to see if we can create a more accurate model.
+
 ​
 ## Goals
 ​
