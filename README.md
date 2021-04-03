@@ -129,25 +129,36 @@ Here is a snapshot of our project planning/setup on the evening of 4/1/21
 ---
 |   Feature      |  Data Type   | Description    |
 | :------------- | :----------: | -----------: |
-|  parcelid | int64   | Unique parcel identifier    |
-| landuse_id     | float64 | Identifier for landuse type|
-| landuse_desc   | object | Describes the type of landuse|
-| last_sold_date  | object |transaction date of when property last sold|
-|  total_sqft  | float64   | Total livable square footage    |
-| bedroom_quanity    | float64 | count of bedrooms|
-| bathroom_quanity   | float64 | count of bathrooms|
-| fips  | object | Federal Information Processing Code (county code)|
-|  zip_code | object   | 5 digit code used by US Postal Service    |
-| year_built    | object | year home was built|
-| tax_assesed_value   | float64 | total value of home established by taxing authority|
-| latitude  | float64 | geographic coordinate that specifies the north–south position |
-|  longitude  | float64   | geographic coordinate that specifies the east-west position     |
-| tax_assess_yr    | float64 | The most recent year property taxes were assessed|
-| property_tax   | float64 | ad valorem tax on the value of a property.|
-| age_of_home  | int64 | age of home as of today's date in years|
-| tax_rate    | float64 | This is property tax / tax_assessed_value|
-| baths_pers_qft   | float64 | numbers of baths per sqft|
-| beds_pers_qft  | float64| number of beds per sqft|
+|  parcelid | float64  | Unique parcel identifier    |
+| heatingorsystemtypeid    | float64| Identifier for heating type|
+| airconditioningtypeid  | float64 | Identifier for ac type|
+| bathroomcnt | float64 |number of bathrooms in property|
+|  bedroomcnt    | float64  | number of bedrooms in property   |
+| calculatedfinishedsquarefeet   | float64 | total livable square footage|
+| fips    | object| Federal Information Processing Code (county code)|
+| latitude | float64 | geographic coordinate that specifies the north–south position|
+|  longitude  | float64   | geographic coordinate that specifies the east-west position |
+| poolcnt    | float64 | has pool = 1, no pool = 0|
+| roomcnt   | float64 | count of rooms in property|
+| yearbuilt   | float64 | year home was built |
+|  fireplaceflag  | int64   | Has fireplace = 1, no fireplace = 0     |
+| taxvaluedollarcnt   | float64 | The most recent year property taxes were assessed|
+| taxamount   | float64 | ad valorem tax on the value of a property.|
+| logerror  | float64 | age of home as of today's date in years|
+| transactiondate     | datetime64[ns] | date property was last sold|
+| airconditioningdesc   | object | description of AC type|
+| heatingorsystemdesc  | object| description of Heating type|
+|age_of_home  | float64   | Current date - Year Built in years    |
+|  age_bin  | float64 | year home was built|
+|  baths_per_sqft | float64 | numbers of baths per sqft|
+|  taxrate   | float64 | This is property tax / tax_assessed_value |
+|  acres   | float64   | lot square footage / 43,560     |
+|  acres_bin   | float64 | properties binned into groups by acreage amounts|
+|  sqft_bin | float64 | properties binned into groups by square footage amounts|
+|  bath_bed_ratio  | float64 | bathroomcnt/bedroomcnt|
+|   la_county   | uint8  | property in LA = 1, not in LA = 0|
+|  orange_county  | uint8  | property in Orange = 1, not in Orange = 0|
+| ventura_county  | uint8 | property in Ventura = 1, not in ventura = 0|
 ​
 ***
 ​
