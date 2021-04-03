@@ -22,8 +22,8 @@
 
 - <b><font color="red"> Friday</font></b>
     - Complete any unfinished tasks from Thursday if still left opened ✅
-    - Review completed exploration exercises and indentify what was useful and can be replicated 💻 
-    - Discuss and create new features that can be explored 💻 
+    - Review completed exploration exercises and indentify what was useful and can be replicated ✅ 
+    - Discuss and create new features that can be explored ✅ 
     - Begin clustering 💻 
         - Explore each cluster to come up with a label/identify each cluster
             - Evaluate which cluster has the most significant log errors through exploration and statistical testing

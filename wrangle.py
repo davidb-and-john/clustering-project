@@ -272,6 +272,7 @@ def seperate_y(train, validate, test):
     This function will take the train, validate, and test dataframes and seperate the target variable into its
     own panda series
     '''
+    
     X_train = train.drop(columns=['logerror'])
     y_train = train.logerror
     X_validate = validate.drop(columns=['logerror'])
