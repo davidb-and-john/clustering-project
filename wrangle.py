@@ -227,6 +227,8 @@ def clean_zillow(df):
     df = df[(df.calculatedfinishedsquarefeet < 8000) & (df.calculatedfinishedsquarefeet > 350)]
     df = df[(df.taxrate < 2.3) & (df.taxrate > .2)]
     df = df[df.acres < .85]
+    df = df[(df.logerror < .25) & (df.logerror > -.25)]
+    
     
     dummy_df = pd.get_dummies(df['fips'])
     dummy_df.columns = ['la_county', 'orange_county', 'ventura_county']
