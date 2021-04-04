@@ -326,12 +326,11 @@ def split_seperate_scale(df, stratify_by= None):
     then it will scale the numeric variables in train, validate, and test
     finally it will return all dataframes individually
     '''
-    
     # split data into train, validate, test
     train, validate, test = split(df, stratify_by= None)
     
     # seperate target variable
-    X_train, X_validate, X_test = seperate_y(train, validate, test)
+    X_train, y_train, X_validate, y_validate, X_test, y_test = seperate_y(train, validate, test)
     
     # scale numeric variable
     train_scaled, validate_scaled, test_scaled = scale_data(X_train, X_validate, X_test)
