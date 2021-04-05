@@ -211,6 +211,8 @@ def clean_zillow(df):
     df['poolcnt'] = df['poolcnt'].astype(int)
     
     df['has_amenities'] = np.where((df['fireplaceflag']==1) | (df['poolcnt']==1), 1, 0)
+    
+    df['bath_amenity_house'] = np.where(((df['has_amenities']==1) & ((df['bathroomcnt']==2) | (df['bathroomcnt']==2.5) | (df['bathroomcnt']==3.0))), 1, 0)
 
     # Drop columns
     dropcols = ['regionidzip', 'finishedsquarefeet12', 'propertyzoningdesc', 'buildingqualitytypeid', 'regionidzip', 'calculatedbathnbr','fullbathcnt', 'landtaxvaluedollarcnt', 'structuretaxvaluedollarcnt', 'censustractandblock', 'regionidcity', 'unitcnt','rawcensustractandblock','propertycountylandusecode', 'regionidcounty', 'assessmentyear', 'propertylandusetypeid', 'id', 'Unnamed: 0', 'fireplacecnt', 'poolcnt', 'fireplaceflag']
