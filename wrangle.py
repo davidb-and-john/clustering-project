@@ -207,9 +207,13 @@ def clean_zillow(df):
     # AC
     df["airconditioningdesc"].fillna("None", inplace = True)
     df["airconditioningtypeid"].fillna(5,inplace = True)
+    
+    df['poolcnt'] = df['poolcnt'].astype(int)
+    
+    df['has_amenities'] = np.where((df['fireplaceflag']==1) | (df['poolcnt']==1), 1, 0)
 
     # Drop columns
-    dropcols = ['regionidzip', 'finishedsquarefeet12', 'propertyzoningdesc', 'buildingqualitytypeid', 'regionidzip', 'calculatedbathnbr','fullbathcnt', 'landtaxvaluedollarcnt', 'structuretaxvaluedollarcnt', 'censustractandblock', 'regionidcity', 'unitcnt','rawcensustractandblock','propertycountylandusecode', 'regionidcounty', 'assessmentyear', 'propertylandusetypeid', 'id', 'Unnamed: 0', 'fireplacecnt']
+    dropcols = ['regionidzip', 'finishedsquarefeet12', 'propertyzoningdesc', 'buildingqualitytypeid', 'regionidzip', 'calculatedbathnbr','fullbathcnt', 'landtaxvaluedollarcnt', 'structuretaxvaluedollarcnt', 'censustractandblock', 'regionidcity', 'unitcnt','rawcensustractandblock','propertycountylandusecode', 'regionidcounty', 'assessmentyear', 'propertylandusetypeid', 'id', 'Unnamed: 0', 'fireplacecnt', 'poolcnt', 'fireplaceflag']
     
     
     df.drop(dropcols, axis=1, inplace=True)
@@ -246,6 +250,10 @@ def clean_zillow(df):
       
     # convert column to date time
     df['transactiondate'] = pd.to_datetime(df['transactiondate'])
+    
+ 
+    
+    
     
     # Set parcelid as the index
     df = df.set_index('parcelid')
