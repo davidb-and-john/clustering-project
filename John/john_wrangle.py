@@ -223,10 +223,12 @@ def clean_zillow(df):
     df['yearbuilt'] = df['yearbuilt'].astype(object)
     
      # Columns to look for outliers
-    df = df[df.taxvaluedollarcnt < 3_000_000]
-    df = df[(df.calculatedfinishedsquarefeet < 8000) & (df.calculatedfinishedsquarefeet > 350)]
+    df = df[df.taxvaluedollarcnt < 1_700_000]
+    df = df[(df.calculatedfinishedsquarefeet < 5000) & (df.calculatedfinishedsquarefeet > 350)]
     df = df[(df.taxrate < 2.3) & (df.taxrate > .2)]
     df = df[df.acres < .85]
+    df = df[(df.logerror < .25) & (df.logerror > -.25)]
+    
     
     dummy_df = pd.get_dummies(df['fips'])
     dummy_df.columns = ['la_county', 'orange_county', 'ventura_county']
