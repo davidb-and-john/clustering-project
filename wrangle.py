@@ -214,8 +214,11 @@ def clean_zillow(df):
     
     df['bath_amenity_house'] = np.where(((df['has_amenities']==1) & ((df['bathroomcnt']==2) | (df['bathroomcnt']==2.5) | (df['bathroomcnt']==3.0))), 1, 0)
 
+     # convert column to date time
+    df['transactiondate'] = pd.to_datetime(df['transactiondate'])
+    
     # Drop columns
-    dropcols = ['regionidzip', 'finishedsquarefeet12', 'propertyzoningdesc', 'buildingqualitytypeid', 'regionidzip', 'calculatedbathnbr','fullbathcnt', 'landtaxvaluedollarcnt', 'structuretaxvaluedollarcnt', 'censustractandblock', 'regionidcity', 'unitcnt','rawcensustractandblock','propertycountylandusecode', 'regionidcounty', 'assessmentyear', 'propertylandusetypeid', 'id', 'Unnamed: 0', 'fireplacecnt', 'poolcnt', 'fireplaceflag']
+    dropcols = ['regionidzip', 'finishedsquarefeet12', 'propertyzoningdesc', 'buildingqualitytypeid', 'regionidzip', 'calculatedbathnbr','fullbathcnt', 'landtaxvaluedollarcnt', 'structuretaxvaluedollarcnt', 'censustractandblock', 'regionidcity', 'unitcnt','rawcensustractandblock','propertycountylandusecode', 'regionidcounty', 'assessmentyear', 'propertylandusetypeid', 'id', 'Unnamed: 0', 'fireplacecnt', 'poolcnt', 'fireplaceflag', 'transactiondate']
     
     
     df.drop(dropcols, axis=1, inplace=True)
@@ -250,8 +253,7 @@ def clean_zillow(df):
     df.dropna(axis = 0, thresh = threshold, inplace = True)
    
       
-    # convert column to date time
-    df['transactiondate'] = pd.to_datetime(df['transactiondate'])
+   
     
  
     
@@ -304,7 +306,7 @@ def scale_data(X_train, X_validate, X_test):
     '''
     
     
-    obj_col = ['fips', 'yearbuilt', 'airconditioningdesc', 'heatingorsystemdesc', 'transactiondate', 'bath_bed_ratio']
+    obj_col = ['fips', 'yearbuilt', 'airconditioningdesc', 'heatingorsystemdesc', 'bath_bed_ratio']
     num_train = X_train.drop(columns = obj_col)
     num_validate = X_validate.drop(columns = obj_col)
     num_test = X_test.drop(columns = obj_col)
