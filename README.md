@@ -69,7 +69,7 @@ A link to the Trello board below can be found at https://trello.com/b/VRlIpoeo/z
 
 Here is a snapshot of our project planning/setup on the evening of 4/1/21
 
-<img src="https://i.ibb.co/MN37PFF/trello-cluster.png" alt="Reg-ppline" border="0">
+<img src="https://i.ibb.co/MN37PFF/trello-cluster.png" alt="Reg-ppline" border="2">
 
 
 
@@ -92,40 +92,11 @@ Here is a snapshot of our project planning/setup on the evening of 4/1/21
 - Conclude results
  
 ----------- 
-### Hypothesis
-- Input hypothesis of entire project (anticipated outcomes, models, statistics, etc)
-​
-### Target variable
-- What are you trying to predict or analyze
-​
-### Need to haves:
-- Requirements for completing report
-​
-### Nice to haves:
-- If you have time, what will you include.
-​
-***
-​
-## <a name="findings"></a>Key Findings:
-[[Back to top](#top)]
-​
-### Explore:
-- What are your key findings from explore?
-​
-​
-### Stats
-- What are your key findings from stats?
-​
-### Modeling:
-- Model results?
-​
-​
-***
-​
+
+
 ## <a name="dictionary"></a>Data Dictionary  
 [[Back to top](#top)]
-​
-### Data Used
+
 ---
 |   Feature      |  Data Type   | Description    |
 | :------------- | :----------: | -----------: |
@@ -167,210 +138,57 @@ Here is a snapshot of our project planning/setup on the evening of 4/1/21
 ​
 ***
 ​
-## <a name="wrangle"></a>Data Acquisition and Preparation
-[[Back to top](#top)]
-​
-### Acquisition and Preparation
-- Did you use a wrangle?  acquire and prepare files?
-- 
-​
-| Function Name | Purpose |
-| ----- | ----- |
-| acquire_functions | DOCSTRING | 
-| prepare_functions | DOCSTRING | 
-| wrangle_functions() | DOCSTRING |
-​
-***
-​
-## <a name="explore"></a>Data Exploration:
-[[Back to top](#top)]
-- wrangle.py 
-​
-| Function Name | Definition |
-| ------------ | ------------- |
-| select_kbest | This function takes in a dataframe, the target feature as a string, and an interger (k) that must be less than or equal to the number of features and returns the (k) best features |
-| rfe | This function takes in a dataframe, the target feature as a string, and an interger (k) that must be less than or equal to the number of features and returns the best features by making a model, removing the weakest feature, then, making a new model, and removing the weakest feature, and so on. |
-| train_validate_test_split | This function takes in a dataframe, the target feature as a string, and a seed interger and returns split data: train, validate, test, X_train, y_train, X_validate, y_validate, X_test, y_test |
-| get_object_cols() | This function takes in a dataframe and identifies the columns that are object types and returns a list of those column names |
-| get_numeric_cols(X_train, object_cols) | This function takes in a dataframe and list of object column names and returns a list of all other columns names, the non-objects. |
-| min_max_scale(X_train, X_validate, X_test, numeric_cols) | This function takes in 3 dataframes with the same columns, a list of numeric column names (because the scaler can only work with numeric columns), and fits a min-max scaler to the first dataframe and transforms all 3 dataframes using that scaler. It returns 3 dataframes with the same column names and scaled values. 
-​
-​
-### Function1 used:
-- Outcome of the use of the function 
-​
-### Function2 used:
-- Outcome of the use of the function 
-​
-***
-​
-## <a name="stats"></a>Statistical Analysis
-[[Back to top](#top)]
-​
-### Stats Test 1:
- - What is the test?
- - Why use this test?
- - What is being compared?
-​
-#### Hypothesis:
-- The null hypothesis (H<sub>0</sub>) is... 
-- The alternate hypothesis (H<sub>1</sub>) is ...
-​
-​
-#### Confidence level and alpha value:
-- I established a 95% confidence level
-- alpha = 1 - confidence, therefore alpha is 0.05
-​
-#### Results:
- - Results of statistical tests
-​
- - Summary:
-     - In depth take-a-ways from the results
-​
-### Stats Test 2 
- - What is the test?
- - Why use this test?
- - What is being compared?
-​
-#### Hypothesis:
-- The null hypothesis (H<sub>0</sub>) is... 
-- The alternate hypothesis (H<sub>1</sub>) is ...
-​
-​
-#### Confidence level and alpha value:
-- I established a 95% confidence level
-- alpha = 1 - confidence, therefore alpha is 0.05
-​
-#### Results:
- - Results of statistical tests
-​
- - Summary:
-     - In depth take-a-ways from the results
-​
-### Stats Test 3
- - What is the test?
- - Why use this test?
- - What is being compared?
-​
-#### Hypothesis:
-- The null hypothesis (H<sub>0</sub>) is... 
-- The alternate hypothesis (H<sub>1</sub>) is ...
-​
-​
-#### Confidence level and alpha value:
-- I established a 95% confidence level
-- alpha = 1 - confidence, therefore alpha is 0.05
-​
-#### Results:
- - Results of statistical tests
-​
- - Summary:
-     - In depth take-a-ways from the results
-​
-***
-​
-## <a name="model"></a>Modeling:
-[[Back to top](#top)]
-​
-Summary of modeling choices...
-​
-### Baseline
-​
-​
-- What is the first step?
+
+-------------------
+  <h3><u>Hypothesis and Questions</u></h3>
+
+- What is driving the errors in zestimates?
+- Is Log Error related to counties?
+- Is there correlation between log error and other features?
+- Is there a relationship between the age of a home and the county it resides in?
+- Is there a relationship between homes with amenities (pool or fireplace) and log error?
+
+
+<h5> The questions above will be answered using t-tests and correlation tests.</h5>
+
+--------------------
+ <h3><u>How To Recreate This Project</u></h3>
+ 
+ To recreate this project you will need use the following files:
+ 
+ wrangle.py
+ 
+ explore.py
+ 
+ Your target variable will be tax_assessed_value which is defined in the above data dictionary. Please visit my final notebook to see this variable being used.
+ 
+ <b>Step 1.</b> Import all necessary libraries to run functions. These can be found in each corresponding .py file
+ 
+ <b>Step 2.</b> Use acquire.py to help pull data from your SQL database. You will need to have your own env.py file with your login information to be able to cpnnect and pull fomr your SQL program.
+ 
+ <b>Step 3.</b> To see the the cleaned data set before training do the following:
+ 
+```df = wrangle_zillow()``` 
+
+After you have gotten to know the data set, run the following to gather the train, validate, test data
+
+```X_train, y_train, X_validate, y_validate, X_test, y_test = seperate_y(train, validate, test)```
     
-```json
-{
-Input code here if you want...
-}
-```
-- Next Step:
-​
-```json
-{
-Code...
-}
-```
-​
-- Baseline Results: 
-    - What are the numbers we are trying to beat with our model.
-        
-***
-​
-### Models and R<sup>2</sup> Values:
-- Will run the following models:
-    - Model 1
-        - brief summary of what the model does.
-    - Model 2 
-        - brief summary of what the model does.
-    - etc.
-​
-- Other indicators of model performance with breif defiition and why it's important:
-    - R<sup>2</sup> Value is the coefficient of determination, pronounced "R squared", is the proportion of the variance in the dependent variable that is predictable from the independent variable. 
-    - Essentially it is a statistical measure of how close the data are to the fitted regression line.
-#### Model 1:
-​
-```json 
-{
-Model 1 code:
-}
-```
-- Model 1 results:
-    - Metric for Model 1:
-        - Training/In-Sample:  **Results**
-        - Validation/Out-of-Sample:  **Results**
-    - Other metrics: (R<sup>2</sup> Value = )
-​
-​
-### Model 2 :
-​
-```json 
-{
-Model 2 code:
-}
-```
-- Model 2 results:
-    - Metric for Model 1:
-        - Training/In-Sample:  **Results**
-        - Validation/Out-of-Sample:  **Results**
-    - Other metrics: (R<sup>2</sup> Value = )
-​
-​
-### Eetc:
-​
-## Selecting the Best Model:
-​
-### Use Table below as a template for all Modeling results for easy comparison:
-​
-| Model | Training/In Sample RMSE | Validation/Out of Sample RMSE | R<sup>2</sup> Value |
-| ---- | ----| ---- | ---- |
-| Baseline | 271194.48 | 272149.78 | -2.1456 x 10<sup>-5</sup> |
-| Linear Regression | 217503.9051 | 220468.9564 | 0.3437 |
-| Tweedie Regressor (GLM) | 217516.6069 | 220563.6468 | 0.3432 |
-| Lasso Lars | 217521.8752 | 220536.3882 | 0.3433 |
-| Polynomial Regression | 211227.5585 | 214109.6968 | 0.3810 |
-​
-- Why did you choose this model?
-- 
-​
-## Testing the Model
-```json
-{
-Model Testing Code...
-}
-```
-- Model Testing Results
-     - Out-of-Sample Performance:  **Results**
-​
-​
-***
-​
-## <a name="conclusion"></a>Conclusion:
-[[Back to top](#top)]
-​
-Reiterate explore findings, statistical analysis, and modeling take-a-ways
-​
-What could be done to improve the model?
-What would you do with more time? 
-​
-Anything else of note worth adding? Add it here.
+ 
+ <b>Step 4.</b> Verify that your data has been prepped using df.head()
+ 
+ <b>Step 5.</b>. Enter the explore phase using the different univariate, bivariate, and multivariate functions from the explore.py file. This is also a great time to use different line plots, swarm plots, and bar charts. The associated libraries to make the charts happen are from matplotlib, seaborn, scipy, plotly and sklearn
+ 
+ <b>Step 6.</b> Evaluate and model the data using different regression algorithms. 
+         
+* Linear Regression
+* Lasso Lars
+* Tweedie Regressor
+* Polynomial Regressor (using a 2nd degree)
+ 
+<b>Step 7.</b> After you have found a model that works, test that model against out of sample data using the function in my notebook.
+ 
+ For a more detailed look, please visit my final notebook for zillow regression for further assistance.
+ 
+--------------------
+
