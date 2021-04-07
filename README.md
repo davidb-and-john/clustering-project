@@ -151,6 +151,20 @@ Here is a snapshot of our project planning/setup on the evening of 4/1/21
 
 <h5> The questions above will be answered using t-tests and correlation tests.</h5>
 
+
+-------------------
+  <h3><u>Takeaways</u></h3>
+ 
+We highly recommend that you check our Final Notebook to get a complete picture of 
+
+The polynomial regressor using 2 degrees was the most effective model in predicitng log error. 
+- It peformed best on the out-of-sample and validate
+- The log error was essentially normally distributed although it had exteme positive and negative outliers.
+
+Moving forward, it appears that since there is little to no correlation between the log error and features within the data set, there must be outside factors that are contributing to either an overvalued or undervalued zestimate 
+
+These outside factors would need to be investigated more and we would want to find a way to bring them into our modeling to reduce log error.
+
 --------------------
  <h3><u>How To Recreate This Project</u></h3>
  
